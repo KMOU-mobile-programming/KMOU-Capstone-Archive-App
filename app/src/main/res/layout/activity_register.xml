@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- 사용자 유형 선택 -->
+        <TextView
+            android:text="사용자 유형 선택"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:id="@+id/userTypeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/user_types"
+            android:layout_marginBottom="16dp" />
+
+        <!-- 학생 입력 영역 -->
+        <LinearLayout
+            android:id="@+id/studentLayout"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/editStudentId"
+                android:hint="학번 (아이디)"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/editStudentName"
+                android:hint="이름"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/editStudentPassword"
+                android:hint="비밀번호"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/editStudentFaculty"
+                android:hint="학부"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/editStudentMajor"
+                android:hint="학과"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- 교수 입력 영역 -->
+        <LinearLayout
+            android:id="@+id/professorLayout"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/editProfessorId"
+                android:hint="아이디"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/editProfessorName"
+                android:hint="이름"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/editProfessorPassword"
+                android:hint="비밀번호"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/editProfessorFaculty"
+                android:hint="학부"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/editProfessorMajor"
+                android:hint="학과"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- 기업 입력 영역 -->
+        <LinearLayout
+            android:id="@+id/companyLayout"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/editCompanyName"
+                android:hint="기업명"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/editCompanyId"
+                android:hint="아이디"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/editCompanyPassword"
+                android:hint="비밀번호"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- 회원가입 버튼 -->
+        <Button
+            android:id="@+id/btnRegister"
+            android:text="회원가입"
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</ScrollView>

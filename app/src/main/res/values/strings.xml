@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">KMOUCapstoneDesignArchive</string>
+    <string name="app_logo" />
+
+    <string-array name="user_types">
+        <item>한국해양대 학생</item>
+        <item>교수</item>
+        <item>기업</item>
+    </string-array>
+</resources>

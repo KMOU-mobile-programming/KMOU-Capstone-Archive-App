@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvSchool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="학교명"
+        android:textSize="16sp"
+        android:layout_marginTop="4dp" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이름"
+        android:layout_marginTop="4dp" />
+
+    <TextView
+        android:id="@+id/tvFaculty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="학부"
+        android:layout_marginTop="4dp" />
+
+    <TextView
+        android:id="@+id/tvMajor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="학과"
+        android:layout_marginTop="4dp" />
+</LinearLayout>

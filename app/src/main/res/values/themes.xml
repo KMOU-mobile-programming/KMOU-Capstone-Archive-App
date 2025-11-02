@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.KMOUCapstoneDesignArchive" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="android:windowIsTranslucent">false</item> <!-- ✅ 클릭 안 막히게 -->
+        <item name="android:windowDisablePreview">true</item> <!-- ✅ 이전 액티비티 잔상 제거 -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.KMOUCapstoneDesignArchive" parent="Base.Theme.KMOUCapstoneDesignArchive" />
+
+    <!-- activity_detail.xml에서 사용하는 구분선 스타일 -->
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+</resources>
