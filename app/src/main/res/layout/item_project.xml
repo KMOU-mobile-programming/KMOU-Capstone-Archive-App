@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@drawable/card_background">
+
+    <TextView
+        android:id="@+id/projectTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:text="프로젝트 제목" />
+
+    <TextView
+        android:id="@+id/teamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team 이름"
+        android:textColor="#555" />
+
+    <TextView
+        android:id="@+id/departmentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="학부/전공"
+        android:textColor="#777" />
+
+    <TextView
+        android:id="@+id/projectSummary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="프로젝트 요약"
+        android:textColor="#999" />
+</LinearLayout>

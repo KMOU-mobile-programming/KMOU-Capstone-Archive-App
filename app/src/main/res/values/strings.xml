@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">KMOUCapstoneDesignArchive</string>
     <string name="app_logo" />
+    <string name="desc_search_icon">검색 아이콘</string>
 
     <string-array name="user_types">
         <item>한국해양대 학생</item>

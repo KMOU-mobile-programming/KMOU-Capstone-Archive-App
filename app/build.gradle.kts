@@ -27,6 +27,9 @@ android {
             )
         }
     }
+    buildFeatures {
+        viewBinding = true   // ✅ 이 한 줄 추가!
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -47,6 +50,8 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("com.google.firebase:firebase-auth:23.0.0")  // ✅ Firebase Auth
     implementation("com.google.firebase:firebase-database:20.3.0")
+    implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
+    implementation("com.google.firebase:firebase-firestore-ktx")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
     implementation("com.google.android.material:material:1.12.0") // Material 컴포넌트 (하단바 등)

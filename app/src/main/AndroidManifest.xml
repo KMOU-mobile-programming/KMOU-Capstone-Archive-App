@@ -25,6 +25,11 @@
         <activity android:name=".Profile.ProfileActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".Home.DetailActivity" />
+        <activity
+            android:name=".Search.SearchActivity"
+            android:exported="false"
+            android:theme="@style/Theme.KMOUCapstoneDesignArchive.NoActionBar" />
+
     </application>
 
 </manifest>

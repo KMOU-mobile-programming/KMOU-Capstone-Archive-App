@@ -5,15 +5,31 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.firestore.FirebaseFirestore
 import com.kmou.capstondesignarchive.LoginActivity
 import com.kmou.capstondesignarchive.Profile.ProfileActivity
 import com.kmou.capstondesignarchive.R
 
+// ✅ Firestore 데이터 구조와 맞춘 데이터 클래스
+data class ProjectItem(
+    val title: String = "",
+    val team: String = "",
+    val department: String = "",
+    val summary: String = ""
+)
+
 class HomeActivity : AppCompatActivity() {
 
     private var userId: String? = null
+
+    // ✅ Firestore, RecyclerView 관련 변수
+    private lateinit var db: FirebaseFirestore
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: ContentAdapter
+    private val contentList = mutableListOf<ContentItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +37,17 @@ class HomeActivity : AppCompatActivity() {
 
         handleIntent(intent)
 
-        // 1. RecyclerView 설정
-        setupRecyclerView()
+        // ✅ Firestore 초기화
+        db = FirebaseFirestore.getInstance()
+
+        // ✅ RecyclerView 초기화
+        recyclerView = findViewById(R.id.content_recycler_view)
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
+        adapter = ContentAdapter(contentList)
+        recyclerView.adapter = adapter
+
+        // ✅ Firestore에서 데이터 불러오기
+        loadProjectsFromFirestore()
 
         // 2. 상단 바 아이콘 설정
         setupTopBarListeners()
@@ -51,41 +76,36 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
-    private fun setupRecyclerView() {
-        // 🚨 주의: R.layout.activity_home 파일 안에
-        // 'content_recycler_view'라는 ID를 가진 RecyclerView가 있는지 꼭 확인하세요!
-        // ID가 없거나 다르면 여기서 앱이 튕깁니다.
-        val recyclerView: RecyclerView = findViewById(R.id.content_recycler_view)
+    // ✅ Firestore에서 프로젝트 데이터 불러오기
+    private fun loadProjectsFromFirestore() {
+        db.collection("projects")
+            .get()
+            .addOnSuccessListener { result ->
+                contentList.clear()
+                for (doc in result) {
+                    val title = doc.getString("title") ?: "제목 없음"
+                    val team = doc.getString("team") ?: "팀 미정"
+                    val department = doc.getString("department") ?: "학부/전공"
+                    val summary = doc.getString("summary") ?: "내용 없음"
 
-        // 예시 컨텐츠 (더미 데이터) 생성
-        val contentList = listOf(
-            ContentItem(R.drawable.dummy_image, "자율 주행", "Team 신"),
-            ContentItem(R.drawable.dummy_image, "보안", "Team DFV"),
-            ContentItem(R.drawable.dummy_image, "자율 주행", "Team 신"),
-            ContentItem(R.drawable.dummy_image, "자율 주행", "Team 신"),
-            ContentItem(R.drawable.dummy_image, "AI 모델", "Team K"),
-            ContentItem(R.drawable.dummy_image, "로보틱스", "Team 로봇"),
-            ContentItem(R.drawable.dummy_image, "웹 서비스", "Team 웹"),
-            ContentItem(R.drawable.dummy_image, "앱 개발", "Team 앱"),
-            ContentItem(R.drawable.dummy_image, "자율 주행", "Team 신"),
-            ContentItem(R.drawable.dummy_image, "보안", "Team DFV"),
-            ContentItem(R.drawable.dummy_image, "자율 주행", "Team 신"),
-            ContentItem(R.drawable.dummy_image, "자율 주행", "Team 신")
-        )
-
-        // 어댑터 생성 및 연결
-        val adapter = ContentAdapter(contentList)
-        recyclerView.adapter = adapter
+                    // 기존 ContentItem 구조에 맞게 변환
+                    contentList.add(ContentItem(R.drawable.dummy_image, title, team))
+                }
+                adapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "데이터 불러오기 실패: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun setupTopBarListeners() {
-        // 🚨 주의: 'icon_search', 'icon_filter' ID도 XML 파일에 있는지 확인하세요.
         val searchIcon: ImageView = findViewById(R.id.icon_search)
         val filterIcon: ImageView = findViewById(R.id.icon_filter)
 
         searchIcon.setOnClickListener {
-            Toast.makeText(this, "검색 클릭됨 (기능 구현 필요)", Toast.LENGTH_SHORT).show()
-            // TODO: 검색 화면으로 이동하는 로직
+            val intent = Intent(this, com.kmou.capstondesignarchive.Search.SearchActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
 
         filterIcon.setOnClickListener {
@@ -93,6 +113,7 @@ class HomeActivity : AppCompatActivity() {
             filterBottomSheet.show(supportFragmentManager, FilterBottomSheet.TAG)
         }
     }
+
 
     // ✅ 8. 하단 네비게이션 로직 전체 수정
     private fun setupBottomNavigation() {
@@ -104,6 +125,12 @@ class HomeActivity : AppCompatActivity() {
                 R.id.nav_home -> {
                     Toast.makeText(this, "홈 클릭됨", Toast.LENGTH_SHORT).show()
                     true // true를 반환해야 선택된 것으로 처리됩니다.
+                }
+                R.id.nav_search -> {
+                    val intent = Intent(this, com.kmou.capstondesignarchive.Search.SearchActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+                    true
                 }
                 R.id.nav_upload -> {
                     Toast.makeText(this, "업로드 클릭됨", Toast.LENGTH_SHORT).show()
