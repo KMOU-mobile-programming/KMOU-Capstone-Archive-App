@@ -8,7 +8,7 @@
 > **중요:** `app/` 경로에 `google-services.json` 파일을 추가해야 Firebase가 정상 작동합니다.
 
 - **DB 유형:** Cloud Firestore  
-- **Firebase Console:** [https://console.firebase.google.com/project/kmou-capstondesignarchive](https://console.firebase.google.com/project/kmou-capstondesignarchive)  
+- **Firebase Console:** [[https://console.firebase.google.com/project/kmou-capstondesignarchive](https://console.firebase.google.com/u/0/project/kmou-capstonedesignarchive/overview)](https://console.firebase.google.com/project/kmou-capstondesignarchive)  
 - **Collection:** `projects`
 
 **예시 구조:**
