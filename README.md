@@ -16,35 +16,16 @@ activity\_detail.xml → 프로젝트 상세 보기 UI
 **drawable/**
 card\_background.xml (카드 배경)
 
-#### 🔥 Firebase 설정 가이드
-| 항목 | 값 |
-
-|------|-----|
-
-| \*\*Firebase 프로젝트명\*\* | `KMOU-CapstoneDesignArchive` |
-
-| \*\*DB 유형\*\* | Cloud Firestore |
-
-| \*\*Firebase Console URL\*\* | \[https://console.firebase.google.com/project/kmou-capstonedesignarchive](https://console.firebase.google.com/project/kmou-capstonedesignarchive) |
-
-Collection: `projects`
-
-Firestore에서 모든 프로젝트 데이터는 `projects` 컬렉션에 저장
-
-예시 구조:
-
-📂 projects (collection)
-
-├─ 📄 \[문서ID1]
-
-│ ├─ title: "자율주행 시뮬레이션 시스템"
-
-│ ├─ team: "Team 신"
-
-│ ├─ department: "인공지능공학부"
-
-│ ├─ summary: "딥러닝 기반 차량 인식 알고리즘을 활용한 시뮬레이션 프로젝트"
-
-│ ├─ createdAt: 1756863600000
-
-│ ├─ award: "2024년 캡스톤 디자인 은상"
+#### 🔥 Firebase 
+1. DB 유형: Cloud Firestore 
+2. Firebase Console URL: [https://console.firebase.google.com/project/kmou-capstonedesignarchive](https://console.firebase.google.com/project/kmou-capstonedesignarchive)
+3. Collection: `projects`
+    Firestore에서 모든 프로젝트 데이터는 `projects` 컬렉션에 저장
+    예시 구조:
+    📂 projects (collection)
+    ├─ 📄 \[문서ID1]
+    │ ├─ title: "자율주행 시뮬레이션 시스템"
+    │ ├─ team: "Team 신"
+    │ ├─ department: "인공지능공학부"
+    │ ├─ summary: "딥러닝 기반 차량 인식 알고리즘을 활용한 시뮬레이션 프로젝트"
+    │ ├─ createdAt: 1756863600000
